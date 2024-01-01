@@ -1,13 +1,20 @@
-buildMain:
+compile: worldToScreen.o MapConversion.o inputHandler.o linedrawing.o
 	gcc cZero.c -o cZeroOut worldToScreen.o MapConversion.o inputHandler.o linedrawing.o -lncurses -lm -lc -lpthread
-worldToScreen:
+	./cZeroOut
+worldToScreen.o:
 	gcc -c worldToScreen.c 
-mapConversion:
+MapConversion.o:
 	gcc -c MapConversion.c
-inputHandler:
+inputHandler.o:
 	gcc -c inputHandler.c -lpthread
 
-lineDrawer:
+linedrawing.o:
 	gcc -c linedrawing.c
 run:
 	./cZeroOut
+clean:
+	rm worldToScreen.o
+	rm MapConversion.o
+	rm inputHandler.o
+	rm linedrawing.o
+	rm cZeroOut
